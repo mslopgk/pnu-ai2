@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #00cf58;
+  --color-section-dark: #000000;
+  --color-surface-card: #161616;
+  --color-text-on-dark: #ffffff;
+  --color-ink: #161616;
+  --color-muted: #6b6b6b;
+  --color-muted-dark: #bfbfbf;
+  --color-hero-bg: #e3e3e3;
+  --color-academics-bg: #0c0c0c;
+  --radius-card: 27px;
+  --radius-pill: 9999px;
+
+  --font-sans: "Mona Sans", "Pretendard Variable", Pretendard, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Coolvetica, "Mona Sans", "Pretendard Variable", Pretendard,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-ui: Inter, "Pretendard Variable", Pretendard, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+}
+
+/*
+  Every Figma page frame is a fixed 1920px-wide canvas. Children are positioned
+  with the exact Figma pixel values, and the whole canvas is uniformly scaled to
+  the viewport width so the rendering stays 1:1 with the design at any window
+  size. Page height comes in per-page from <Canvas>.
+*/
+:root {
+  --canvas-w: 1920;
+  --canvas-h: 16713; /* per-page override set inline by <Canvas> */
+  --scale: 1;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.canvas-viewport {
+  width: 100%;
+  height: calc(var(--canvas-h) * 1px * var(--scale));
+  overflow: hidden;
+}
+
+.canvas {
+  width: calc(var(--canvas-w) * 1px);
+  transform: scale(var(--scale));
+  transform-origin: top left;
+  position: relative;
+  background: #000;
+}
+
+/* Mona Sans ships a width axis; the design pins body copy to 100. */
+.wdth-100 {
+  font-stretch: 100%;
+}
+
+/*
+  The oversized display type in the source file is set in Coolvetica, which is
+  not a webfont. Mona Sans is the closest available grotesque; the weight and
+  width below were fitted against the Figma text-node advance widths and stem
+  thickness so the headlines occupy the same space as the original.
+*/
+.display-type {
+  font-family: var(--font-display);
+  font-weight: 625;
+  font-stretch: 88%;
+}

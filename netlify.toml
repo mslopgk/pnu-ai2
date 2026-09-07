@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# react-router serves five client-side routes; without this every deep link
+# (/overview, /departments, …) 404s on a hard refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# No long-lived cache header here on purpose: Vite's hashed bundles and the
+# unhashed media copied from public/ both land in /assets, so an immutable
+# rule would also pin the images and videos, which do get replaced.
